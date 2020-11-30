@@ -1,0 +1,48 @@
+@import '../styles/varible.less';
+.detail-page{
+  .sub-list();
+  article{
+    padding: 0 15px;
+    h1{
+      font-size:22px; text-align: center;
+    }
+    img{
+      width: 100%;
+    }
+    content p{
+      font-size:16px;
+      line-height: 1.6666em;
+      text-indent: 2em;
+    }
+  }
+  .comments{
+    margin-top: -1px;
+    padding: 0 15px;
+    border-top: 1px solid #ddd;
+    &-header{
+      padding: 10px 0;
+      font-size: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    &-item{
+      padding: 5px 0;
+      &-left{
+        flex: 0 1 auto;
+        padding-right: 10px;
+      }
+      &-right{
+        p{
+          margin: 0;
+          line-height: 1.666;
+        }
+        .item-header{
+          display: flex;
+          justify-content: space-between;
+          i{
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+}
