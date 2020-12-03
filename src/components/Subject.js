@@ -3,7 +3,8 @@ import { Flex } from 'antd-mobile';
 import Img from './Img'
 import "../assets/styles/subject.less"
 import axios from 'axios'
-export default class Subject extends Component {
+import { connect } from 'react-redux'
+class Subject extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -11,10 +12,12 @@ export default class Subject extends Component {
     }
   }
   componentDidMount () {
+    console.log(this.props)
     axios.get("./server/subject.json").then(res => {
-      this.setState({
-        subject_data: res.data
-      })
+      this.props.init_subject_data(res.data)
+      // this.setState({
+      //   subject_data: res.data
+      // })
     })
   }
   render () {
@@ -22,7 +25,7 @@ export default class Subject extends Component {
       <div className="flex-container">
         <Flex>
           {
-            this.state.subject_data.map((item, index) => {
+            this.props.subject_data.map((item, index) => {
               if (index < 4) {
                 return <Flex.Item key={item.id}><a href={"#/list/" + item.id}><Img height="56px" src={item.src} /><p>{item.subjectName}</p></a></Flex.Item>
               }
@@ -36,7 +39,7 @@ export default class Subject extends Component {
         </Flex>
         <Flex>
           {
-            this.state.subject_data.map((item, index) => {
+            this.props.subject_data.map((item, index) => {
               if (index >= 4) {
                 return <Flex.Item key={item.id}><a href={"#/list/:" + item.id}><Img height="56px" src={item.src} /><p>{item.subjectName}</p></a></Flex.Item>
               }
@@ -52,3 +55,21 @@ export default class Subject extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    subject_data: state.subject_data
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    init_subject_data (data) {
+      const action = {
+        type: 'init_subject_data',
+        value: data
+      }
+      dispatch(action)
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Subject)
