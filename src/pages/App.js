@@ -19,7 +19,7 @@ import DetailPage from './DetailPage'
 const appRouter = <Router history={hashHistory}>
   <Route path="/" component={LoginPage} />
   <Route path="/home" component={HomePage} />
-  <Route path="/list" component={ListPage} />
+  <Route path="/list/:id" component={ListPage} />
   <Route path="/detail" component={DetailPage} />
 </Router>
 

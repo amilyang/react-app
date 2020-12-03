@@ -5,7 +5,7 @@ export default class FormBtn extends Component {
     return (
       this.props.type === "ordinary" ?
         <a className="forget" href="###">{this.props.children}</a> :
-        <button className={`btn ${this.props.isFull ? 'full' : ''}`}>{this.props.children}</button>
+        <button className={`btn ${this.props.isFull ? 'full' : ''}`} onClick={this.props.onClick}>{this.props.children}</button>
     )
   }
 }

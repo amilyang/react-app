@@ -6,7 +6,7 @@ export default class FormInput extends Component {
     return (
       <div className="input-group">
         <i className={"iconfont icon-" + this.props.icon}></i>
-        <input type={this.props.type} placeholder={this.props.placeholder} />
+        <input type={this.props.type} name={this.props.name} placeholder={this.props.placeholder} value={this.props.value} onChange={this.props.onChange} />
       </div>
     )
   }
